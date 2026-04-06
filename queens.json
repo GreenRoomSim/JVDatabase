@@ -1998,5 +1998,145 @@
         "challenge_wins": 0
       }
     ]
+  },
+  {
+    "name": "Suki Sparkle",
+    "seasons": [
+      {
+        "season": "Season 15",
+        "placement": "14th",
+        "challenge_wins": 0
+      }
+    ]
+  },
+  {
+    "name": "Amie Zonite",
+    "seasons": [
+      {
+        "season": "Season 15",
+        "placement": "13th",
+        "challenge_wins": 0
+      }
+    ]
+  },
+  {
+    "name": "Mira La'Bloom",
+    "seasons": [
+      {
+        "season": "Season 15",
+        "placement": "12th",
+        "challenge_wins": 0
+      }
+    ]
+  },
+  {
+    "name": "Velvet Dollhouse",
+    "seasons": [
+      {
+        "season": "Season 15",
+        "placement": "11th",
+        "challenge_wins": 0
+      }
+    ]
+  },
+  {
+    "name": "Opal",
+    "seasons": [
+      {
+        "season": "Season 15",
+        "placement": "10th",
+        "challenge_wins": 0
+      }
+    ]
+  },
+  {
+    "name": "Vera Lush",
+    "seasons": [
+      {
+        "season": "Season 15",
+        "placement": "9th",
+        "challenge_wins": 1
+      }
+    ]
+  },
+  {
+    "name": "Lucky Drop",
+    "seasons": [
+      {
+        "season": "Season 15",
+        "placement": "8th",
+        "challenge_wins": 1
+      }
+    ]
+  },
+  {
+    "name": "Charli See Ya Ex",
+    "seasons": [
+      {
+        "season": "Season 15",
+        "placement": "7th",
+        "challenge_wins": 2
+      }
+    ]
+  },
+  {
+    "name": "Trinity Royale",
+    "seasons": [
+      {
+        "season": "Season 15",
+        "placement": "6th",
+        "challenge_wins": 1
+      }
+    ]
+  },
+  {
+    "name": "Gaga Deluxe",
+    "seasons": [
+      {
+        "season": "Season 15",
+        "placement": "5th",
+        "challenge_wins": 1
+      }
+    ]
+  },
+  {
+    "name": "Manda Crème",
+    "seasons": [
+      {
+        "season": "Season 15",
+        "placement": "4th",
+        "challenge_wins": 1
+      }
+    ]
+  },
+  {
+    "name": "Geneva Cristàl",
+    "seasons": [
+      {
+        "season": "Season 15",
+        "placement": "3rd",
+        "challenge_wins": 3
+      }
+    ]
+  },
+  {
+    "name": "Miss Big O",
+    "seasons": [
+      {
+        "season": "Season 15",
+        "placement": "Runner Up",
+        "challenge_wins": 3
+      }
+    ]
+  },
+  {
+    "name": "Goldie",
+    "seasons": [
+      {
+        "season": "Season 15",
+        "placement": "Winner",
+        "challenge_wins": 3
+      }
+    ]
   }
 ]
