@@ -5,12 +5,12 @@
       {
         "season": "Season 1",
         "placement": "Winner",
-        "challenge_wins": 0
+        "challenge_wins": 3
       },
       {
         "season": "All Stars 3",
         "placement": "3rd",
-        "challenge_wins": 0
+        "challenge_wins": 3
       }
     ]
   },
@@ -20,22 +20,22 @@
       {
         "season": "Season 1",
         "placement": "Runner Up",
-        "challenge_wins": 0
+        "challenge_wins": 1
       },
       {
         "season": "All Stars 1",
         "placement": "5th",
-        "challenge_wins": 0
+        "challenge_wins": 2
       },
       {
         "season": "JV vs The Universe",
         "placement": "Winner",
-        "challenge_wins": 0
+        "challenge_wins": 3
       },
       {
         "season": "All Stars 5",
         "placement": "8-5th",
-        "challenge_wins": 0
+        "challenge_wins": 2
       }
     ]
   },
@@ -45,17 +45,17 @@
       {
         "season": "Season 1",
         "placement": "3rd",
-        "challenge_wins": 0
+        "challenge_wins": 2
       },
       {
         "season": "All Stars 2",
         "placement": "4th",
-        "challenge_wins": 0
+        "challenge_wins": 3
       },
       {
         "season": "All Stars 6",
         "placement": "7th",
-        "challenge_wins": 0
+        "challenge_wins": 1
       }
     ]
   },
@@ -65,12 +65,12 @@
       {
         "season": "Season 1",
         "placement": "4th",
-        "challenge_wins": 0
+        "challenge_wins": 2
       },
       {
         "season": "All Stars 1",
         "placement": "8th",
-        "challenge_wins": 0
+        "challenge_wins": 1
       },
       {
         "season": "All Stars 4",
@@ -115,7 +115,7 @@
       {
         "season": "All Stars 2",
         "placement": "Winner",
-        "challenge_wins": 0
+        "challenge_wins": 2
       }
     ]
   },
@@ -135,12 +135,12 @@
       {
         "season": "Season 2",
         "placement": "Winner",
-        "challenge_wins": 0
+        "challenge_wins": 2
       },
       {
         "season": "All Stars 5",
         "placement": "Winner",
-        "challenge_wins": 0
+        "challenge_wins": 3
       }
     ]
   },
@@ -150,12 +150,12 @@
       {
         "season": "Season 2",
         "placement": "Runner Up",
-        "challenge_wins": 0
+        "challenge_wins": 2
       },
       {
         "season": "All Stars 1",
         "placement": "4th",
-        "challenge_wins": 0
+        "challenge_wins": 2
       },
       {
         "season": "JV vs The Universe",
@@ -175,17 +175,17 @@
       {
         "season": "All Stars 1",
         "placement": "6th",
-        "challenge_wins": 0
+        "challenge_wins": 2
       },
       {
         "season": "All Stars 4",
         "placement": "Winner",
-        "challenge_wins": 0
+        "challenge_wins": 2
       },
       {
         "season": "All Stars 5",
         "placement": "8-5th",
-        "challenge_wins": 0
+        "challenge_wins": 1
       }
     ]
   },
@@ -195,12 +195,12 @@
       {
         "season": "Season 2",
         "placement": "3/4th",
-        "challenge_wins": 0
+        "challenge_wins": 1
       },
       {
         "season": "All Stars 1",
         "placement": "3rd",
-        "challenge_wins": 0
+        "challenge_wins": 1
       },
       {
         "season": "All Stars 3",
@@ -215,12 +215,12 @@
       {
         "season": "Season 2",
         "placement": "5th",
-        "challenge_wins": 0
+        "challenge_wins": 1
       },
       {
         "season": "All Stars 4",
         "placement": "3/4th",
-        "challenge_wins": 0
+        "challenge_wins": 2
       }
     ]
   },
@@ -245,7 +245,7 @@
       {
         "season": "Season 2",
         "placement": "7th",
-        "challenge_wins": 0
+        "challenge_wins": 1
       },
       {
         "season": "All Stars 2",
@@ -265,12 +265,12 @@
       {
         "season": "All Stars 1",
         "placement": "Runner Up",
-        "challenge_wins": 0
+        "challenge_wins": 3
       },
       {
         "season": "All Stars 3",
         "placement": "4th",
-        "challenge_wins": 0
+        "challenge_wins": 3
       }
     ]
   },
@@ -285,7 +285,7 @@
       {
         "season": "All Stars 2",
         "placement": "6th",
-        "challenge_wins": 0
+        "challenge_wins": 1
       }
     ]
   },
@@ -400,12 +400,12 @@
       {
         "season": "All Stars 4",
         "placement": "5-8th",
-        "challenge_wins": 0
+        "challenge_wins": 3
       },
       {
         "season": "All Stars 6",
         "placement": "6th",
-        "challenge_wins": 0
+        "challenge_wins": 2
       }
     ]
   },
@@ -425,7 +425,7 @@
       {
         "season": "All Stars 4",
         "placement": "18-11th",
-        "challenge_wins": 0
+        "challenge_wins": 1
       }
     ]
   },
