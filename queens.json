@@ -101,6 +101,11 @@
         "season": "All Stars 1",
         "placement": "7th",
         "challenge_wins": 0
+      },
+      {
+        "season": "All Stars 7",
+        "placement": "10th-15th",
+        "challenge_wins": 0
       }
     ]
   },
@@ -381,6 +386,11 @@
         "season": "All Stars 2",
         "placement": "8th",
         "challenge_wins": 0
+      },
+      {
+        "season": "All Stars 7",
+        "placement": "Runner Up",
+        "challenge_wins": 0
       }
     ]
   },
@@ -436,6 +446,11 @@
         "season": "Season 3",
         "placement": "8th",
         "challenge_wins": 0
+      },
+      {
+        "season": "All Stars 7",
+        "placement": "9th",
+        "challenge_wins": 0
       }
     ]
   },
@@ -470,6 +485,11 @@
       {
         "season": "Season 3",
         "placement": "11th",
+        "challenge_wins": 0
+      },
+      {
+        "season": "All Stars 7",
+        "placement": "10th-15th",
         "challenge_wins": 0
       }
     ]
@@ -771,6 +791,11 @@
         "season": "Season 5",
         "placement": "10th",
         "challenge_wins": 0
+      },
+      {
+        "season": "All Stars 7",
+        "placement": "10th-15th",
+        "challenge_wins": 0
       }
     ]
   },
@@ -850,6 +875,11 @@
       {
         "season": "All Stars 4",
         "placement": "10th",
+        "challenge_wins": 0
+      },
+      {
+        "season": "All Stars 7",
+        "placement": "10th-15th",
         "challenge_wins": 0
       }
     ]
@@ -1056,6 +1086,11 @@
         "season": "Season 7",
         "placement": "7th",
         "challenge_wins": 0
+      },
+      {
+        "season": "All Stars 7",
+        "placement": "10th-15th",
+        "challenge_wins": 0
       }
     ]
   },
@@ -1151,6 +1186,11 @@
         "season": "Season 8",
         "placement": "3/4th",
         "challenge_wins": 0
+      },
+      {
+        "season": "All Stars 7",
+        "placement": "4th-7th",
+        "challenge_wins": 0
       }
     ]
   },
@@ -1215,6 +1255,11 @@
       {
         "season": "All Stars 4",
         "placement": "18-11th",
+        "challenge_wins": 0
+      },
+      {
+        "season": "All Stars 7",
+        "placement": "4th-7th",
         "challenge_wins": 0
       }
     ]
@@ -1355,6 +1400,11 @@
       {
         "season": "Season 10",
         "placement": "3rd",
+        "challenge_wins": 0
+      },
+      {
+        "season": "All Stars 7",
+        "placement": "4th-7th",
         "challenge_wins": 0
       }
     ]
@@ -1611,6 +1661,11 @@
         "season": "Season 12",
         "placement": "5th Place",
         "challenge_wins": 0
+      },
+      {
+        "season": "All Stars 7",
+        "placement": "8th",
+        "challenge_wins": 0
       }
     ]
   },
@@ -1630,6 +1685,11 @@
       {
         "season": "Season 12",
         "placement": "3rd/4th Place",
+        "challenge_wins": 0
+      },
+      {
+        "season": "All Stars 7",
+        "placement": "Winner",
         "challenge_wins": 0
       }
     ]
@@ -1681,6 +1741,11 @@
         "season": "Season 13",
         "placement": "12th",
         "challenge_wins": 0
+      },
+      {
+        "season": "All Stars 7",
+        "placement": "Runner Up",
+        "challenge_wins": 0
       }
     ]
   },
@@ -1710,6 +1775,11 @@
       {
         "season": "Season 13",
         "placement": "9th",
+        "challenge_wins": 0
+      },
+      {
+        "season": "All Stars 7",
+        "placement": "4th-7th",
         "challenge_wins": 0
       }
     ]
@@ -1750,6 +1820,11 @@
       {
         "season": "Season 13",
         "placement": "3rd/4th",
+        "challenge_wins": 0
+      },
+      {
+        "season": "All Stars 7",
+        "placement": "Winner",
         "challenge_wins": 0
       }
     ]
