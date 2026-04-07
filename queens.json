@@ -331,6 +331,11 @@
         "season": "All Stars 2",
         "placement": "10th",
         "challenge_wins": 0
+      },
+      {
+        "season": "JV vs The Universe Season 2",
+        "placement": "11th",
+        "challenge_wins": 0
       }
     ]
   },
@@ -736,6 +741,11 @@
         "season": "All Stars 2",
         "placement": "5th",
         "challenge_wins": 0
+      },
+      {
+        "season": "JV vs The Universe Season 2",
+        "placement": "6tg",
+        "challenge_wins": 1
       }
     ]
   },
@@ -826,6 +836,11 @@
         "season": "All Stars 6",
         "placement": "Runner Up",
         "challenge_wins": 0
+      },
+      {
+        "season": "JV vs The Universe Season 2",
+        "placement": "Runner Up",
+        "challenge_wins": 1
       }
     ]
   },
@@ -1129,6 +1144,11 @@
     "seasons": [
       {
         "season": "Season 7",
+        "placement": "10th",
+        "challenge_wins": 0
+      },
+      {
+        "season": "JV vs The Universe Season 2",
         "placement": "10th",
         "challenge_wins": 0
       }
@@ -1676,6 +1696,11 @@
         "season": "Season 12",
         "placement": "3rd/4th Place",
         "challenge_wins": 0
+      },
+      {
+        "season": "JV vs The Universe Season 2",
+        "placement": "Winner",
+        "challenge_wins": 2
       }
     ]
   },
@@ -2136,6 +2161,76 @@
         "season": "Season 15",
         "placement": "Winner",
         "challenge_wins": 3
+      }
+    ]
+  },
+  {
+    "name": "Galatea Genesis",
+    "seasons": [
+      {
+        "season": "JV vs The Universe Season 2",
+        "placement": "12th",
+        "challenge_wins": 0
+      }
+    ]
+  },
+  {
+    "name": "Black Peppa",
+    "seasons": [
+      {
+        "season": "JV vs The Universe Season 2",
+        "placement": "9th",
+        "challenge_wins": 0
+      }
+    ]
+  },
+  {
+    "name": "Kandy Zyanide",
+    "seasons": [
+      {
+        "season": "JV vs The Universe Season 2",
+        "placement": "8th",
+        "challenge_wins": 1
+      }
+    ]
+  },
+  {
+    "name": "Suki Drip",
+    "seasons": [
+      {
+        "season": "JV vs The Universe Season 2",
+        "placement": "7th",
+        "challenge_wins": 1
+      }
+    ]
+  },
+  {
+    "name": "Jujubee",
+    "seasons": [
+      {
+        "season": "JV vs The Universe Season 2",
+        "placement": "5th",
+        "challenge_wins": 0
+      }
+    ]
+  },
+  {
+    "name": "Coco Cabana",
+    "seasons": [
+      {
+        "season": "JV vs The Universe Season 2",
+        "placement": "4th",
+        "challenge_wins": 1
+      }
+    ]
+  },
+  {
+    "name": "Jane Don't",
+    "seasons": [
+      {
+        "season": "JV vs The Universe Season 2",
+        "placement": "Runner Up",
+        "challenge_wins": 1
       }
     ]
   }
