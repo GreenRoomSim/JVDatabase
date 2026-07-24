@@ -5,627 +5,175 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Fantasy Drag Race · Queen Database</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;0,700;1,300;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
-  :root {
-    --bg:         #080610;
-    --surface:    #110e1e;
-    --card:       #160f28;
-    --border:     #271d42;
-    --border2:    #3a2d5e;
-    --pink:       #ff2d78;
-    --magenta:    #d400a8;
-    --gold:       #f5c842;
-    --gold-dim:   #b8941f;
-    --lilac:      #bf80ff;
-    --cyan:       #00e5ff;
-    --text:       #f5eeff;
-    --muted:      #8a72b8;
-    --faint:      #3d2f66;
-    --winner-bg:  rgba(245,200,66,0.08);
-    --winner-bdr: #f5c842;
-    --2nd-bg:     rgba(191,128,255,0.08);
-    --2nd-bdr:    #bf80ff;
-    --low-bg:     rgba(255,45,120,0.08);
-    --low-bdr:    #ff2d78;
+  :root{
+    --bg:#0c1210; --panel:#121b17; --card:#16211c; --border:#233830; --border2:#33513f;
+    --lime:#9be564; --lime-dim:#5f8f3f; --text:#eaf5e6; --muted:#7a9284; --faint:#1c2b24;
+    --winner:#9be564; --second:#e8d94a; --low:#ef6f6f;
   }
 
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Outfit', sans-serif;
-    min-height: 100vh;
-    overflow-x: hidden;
-    cursor: default;
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--text); font-family:'Space Grotesk',sans-serif;
+    min-height:100vh; cursor:default;
   }
 
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 80% 50% at 20% -10%, rgba(180,0,180,0.12) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 40% at 80% 110%, rgba(0,200,255,0.07) 0%, transparent 60%),
-      radial-gradient(ellipse 40% 30% at 50% 50%, rgba(100,0,200,0.06) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
-  }
+  .wrap{max-width:900px;margin:0 auto;padding:0 1.5rem 5rem;display:none}
 
-  body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.4;
-  }
+  /* ── Hero ── */
+  .hero{padding:3rem 0 2rem}
+  .top{display:flex;align-items:center;gap:.6rem;margin-bottom:.35rem}
+  .top .dot{width:10px;height:10px;border-radius:50%;background:var(--lime);box-shadow:0 0 8px var(--lime)}
+  h1{font-weight:700;font-size:clamp(1.7rem,4vw,2.2rem);letter-spacing:-.01em}
+  .sub{color:var(--muted);font-size:.85rem;font-family:'JetBrains Mono',monospace}
 
-  .wrap {
-    position: relative;
-    z-index: 1;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 1.5rem 5rem;
-    display: none;
+  /* ── Search ── */
+  .search-row{display:flex;gap:.6rem;margin:1.75rem 0 1rem}
+  input[type=text]{
+    flex:1; background:var(--panel); border:1.5px solid var(--border); border-radius:10px;
+    color:var(--text); font-family:'Space Grotesk'; font-size:.95rem; padding:.75rem .95rem; outline:none;
+    transition:border-color .2s;
   }
+  input[type=text]::placeholder{color:var(--muted)}
+  input[type=text]:focus{border-color:var(--lime)}
 
-  /* ── HERO ── */
-  .hero {
-    text-align: center;
-    padding: 4rem 1rem 3rem;
-    position: relative;
+  /* ── Toolbar (franchise tabs + season + sort) ── */
+  .toolbar{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-bottom:1.25rem}
+  .tab{
+    background:var(--panel); border:1.5px solid var(--border); color:var(--muted);
+    font-size:.78rem; font-weight:500; padding:.45rem .9rem; border-radius:9px; cursor:pointer;
+    font-family:'Space Grotesk'; transition:.15s;
   }
-  .hero-eyebrow {
-    font-size: 0.7rem;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: var(--magenta);
-    font-weight: 500;
-    margin-bottom: 1rem;
-    opacity: 0;
-    animation: fadeUp 0.6s 0.1s forwards;
-  }
-  .hero-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3rem, 8vw, 5.5rem);
-    font-weight: 700;
-    line-height: 0.95;
-    letter-spacing: -0.02em;
-    background: linear-gradient(135deg, #fff 0%, var(--lilac) 35%, var(--pink) 65%, var(--gold) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 0.5rem;
-    opacity: 0;
-    animation: fadeUp 0.6s 0.2s forwards;
-  }
-  .hero-rule {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin: 0 auto 2.5rem;
-    max-width: 340px;
-    opacity: 0;
-    animation: fadeUp 0.6s 0.4s forwards;
-  }
-  .hero-rule::before, .hero-rule::after {
-    content: ''; flex: 1; height: 1px;
-    background: linear-gradient(90deg, transparent, var(--faint));
-  }
-  .hero-rule::after { background: linear-gradient(90deg, var(--faint), transparent); }
-  .hero-rule span { color: var(--magenta); font-size: 1.1rem; }
+  .tab.active{background:var(--lime);color:#0c1210;border-color:var(--lime)}
+  .tab:hover:not(.active){border-color:var(--border2)}
 
-  /* ── TAB NAV ── */
-  .tab-nav {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 2rem;
-    opacity: 0;
-    animation: fadeUp 0.6s 0.45s forwards;
+  select{
+    background:var(--panel); border:1.5px solid var(--border); color:var(--text);
+    font-family:'Space Grotesk'; font-size:.8rem; padding:.55rem .8rem; border-radius:9px; outline:none;
   }
-  .tab-btn {
-    background: var(--surface);
-    border: 1.5px solid var(--border);
-    border-radius: 30px;
-    color: var(--muted);
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    padding: 0.45rem 1.2rem;
-    cursor: pointer;
-    transition: border-color 0.2s, color 0.2s, background 0.2s;
-  }
-  .tab-btn:hover { border-color: var(--border2); color: var(--text); }
-  .tab-btn.active {
-    background: linear-gradient(135deg, rgba(212,0,168,0.18), rgba(122,0,204,0.18));
-    border-color: var(--magenta);
-    color: var(--lilac);
-  }
+  #seasonSelect{ }
+  #sortSelect{margin-left:auto}
 
-  /* ── STATS BAR ── */
-  .stats-bar {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    opacity: 0;
-    animation: fadeUp 0.6s 0.6s forwards;
-    flex-wrap: wrap;
-  }
-  .stat-pill {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 30px;
-    padding: 0.4rem 1rem;
-    font-size: 0.78rem;
-    color: var(--muted);
-    letter-spacing: 0.05em;
-  }
-  .stat-pill strong { color: var(--lilac); font-weight: 600; }
+  /* ── Stats ── */
+  .stats-row{display:flex;gap:.7rem;margin-bottom:1.75rem;flex-wrap:wrap}
+  .stat{background:var(--panel);border:1.5px solid var(--border);border-radius:10px;padding:.6rem 1rem;flex:1;min-width:100px}
+  .stat .n{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:1.25rem;color:var(--lime)}
+  .stat .l{font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
 
-  /* ── SEARCH + FILTER ROW ── */
-  .controls-row {
-    display: flex;
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
-    flex-wrap: wrap;
-    opacity: 0;
-    animation: fadeUp 0.6s 0.5s forwards;
-  }
-  .search-wrap {
-    position: relative;
-    flex: 1;
-    min-width: 200px;
-  }
-  .search-icon {
-    position: absolute;
-    left: 1.1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--muted);
-    font-size: 1rem;
-    pointer-events: none;
-  }
-  #searchInput {
-    width: 100%;
-    background: var(--surface);
-    border: 1.5px solid var(--border);
-    border-radius: 14px;
-    color: var(--text);
-    font-family: 'Outfit', sans-serif;
-    font-size: 1rem;
-    padding: 0.95rem 1rem 0.95rem 2.8rem;
-    outline: none;
-    transition: border-color 0.25s, box-shadow 0.25s;
-  }
-  #searchInput::placeholder { color: var(--muted); }
-  #searchInput:focus {
-    border-color: var(--lilac);
-    box-shadow: 0 0 0 4px rgba(191,128,255,0.12);
-  }
+  .results-label{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;font-family:'JetBrains Mono',monospace}
 
-  #seasonFilter {
-    background: var(--surface);
-    border: 1.5px solid var(--border);
-    border-radius: 14px;
-    color: var(--text);
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.9rem;
-    padding: 0.95rem 1.2rem;
-    outline: none;
-    cursor: pointer;
-    transition: border-color 0.2s;
-    min-width: 170px;
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a72b8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 1rem center;
-    padding-right: 2.5rem;
-  }
-  #seasonFilter:focus { border-color: var(--lilac); }
-  #seasonFilter option { background: var(--card); color: var(--text); }
+  /* ── Detailed queen cards ── */
+  .queens-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:1rem}
 
-  /* ── RESULTS LABEL ── */
-  .results-label {
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 1rem;
-    font-weight: 500;
-  }
+  .queen-card{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:1.2rem 1.3rem;transition:border-color .15s}
+  .queen-card:hover{border-color:var(--border2)}
 
-  /* ── QUEEN CARDS ── */
-  .queens-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr));
-    gap: 1rem;
-  }
-  .queen-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    padding: 1.6rem 1.8rem 1.5rem;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
-    animation: cardIn 0.4s ease both;
-  }
-  .queen-card:hover {
-    transform: translateY(-3px);
-    border-color: var(--border2);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(191,128,255,0.08);
-  }
-  .queen-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--magenta), var(--lilac), var(--cyan));
-    opacity: 0.7;
-  }
-  .queen-card::after {
-    content: '';
-    position: absolute;
-    top: -40px; right: -40px;
-    width: 120px; height: 120px;
-    background: radial-gradient(circle, rgba(191,128,255,0.08) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .queen-header { margin-bottom: 1.1rem; }
-  .queen-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.65rem;
-    font-weight: 600;
-    color: var(--text);
-    line-height: 1.1;
-    margin-bottom: 0.25rem;
-  }
-  .queen-meta {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  .meta-chip {
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted);
-    background: rgba(255,255,255,0.04);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 0.18rem 0.6rem;
-  }
-  .meta-chip.crowns { color: var(--gold); border-color: rgba(245,200,66,0.25); background: rgba(245,200,66,0.06); }
+  .name-row{display:flex;justify-content:space-between;align-items:start;gap:.6rem;margin-bottom:.5rem}
+  .name{font-weight:700;font-size:1.15rem;line-height:1.2}
+  .franchise-tag{font-family:'JetBrains Mono',monospace;font-size:.66rem;color:var(--muted);margin-top:.15rem;letter-spacing:.03em}
 
-  .seasons-list { display: flex; flex-direction: column; gap: 0.35rem; }
-  .season-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.5rem 0.85rem;
-    border-radius: 9px;
-    background: rgba(255,255,255,0.03);
-    border-left: 3px solid var(--border2);
-    transition: background 0.15s;
-    gap: 0.5rem;
+  .badges{display:flex;gap:.4rem;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end}
+  .badge{
+    font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:600;border-radius:7px;padding:.15rem .5rem;
+    background:rgba(155,229,100,.1);color:var(--lime);border:1px solid rgba(155,229,100,.25);white-space:nowrap;
   }
-  .season-row:hover { background: rgba(255,255,255,0.055); }
-  .season-row.p-winner { border-left-color: var(--winner-bdr); background: var(--winner-bg); }
-  .season-row.p-second { border-left-color: var(--2nd-bdr);   background: var(--2nd-bg); }
-  .season-row.p-low    { border-left-color: var(--low-bdr);   background: var(--low-bg); }
+  .badge.star{background:rgba(232,217,74,.1);color:var(--second);border-color:rgba(232,217,74,.25)}
 
-  .season-row-left { display: flex; flex-direction: column; gap: 0.1rem; flex: 1; }
-  .season-name { font-size: 0.88rem; color: var(--text); font-weight: 500; }
-  .challenge-wins-label {
-    font-size: 0.7rem;
-    color: var(--gold-dim);
-    letter-spacing: 0.04em;
+  .seasons{margin-top:.8rem;display:flex;flex-direction:column;gap:.3rem}
+  .season{
+    display:flex;justify-content:space-between;align-items:center;padding:.4rem .6rem;border-radius:7px;
+    background:rgba(255,255,255,.02);border-left:3px solid var(--border2);font-size:.85rem;gap:.5rem;
   }
-  .challenge-wins-label span { color: var(--gold); font-weight: 600; }
+  .season.winner{border-left-color:var(--winner);background:rgba(155,229,100,.06)}
+  .season.second{border-left-color:var(--second);background:rgba(232,217,74,.06)}
+  .season.low{border-left-color:var(--low);background:rgba(239,111,111,.06)}
+  .s-name{color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .s-right{display:flex;align-items:center;gap:.5rem;flex-shrink:0}
+  .s-cw{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--muted)}
+  .placement{
+    font-family:'JetBrains Mono',monospace;font-size:.68rem;font-weight:600;text-transform:uppercase;
+    padding:.12rem .5rem;border-radius:6px;color:var(--muted);white-space:nowrap;
+  }
+  .season.winner .placement{color:var(--winner)}
+  .season.second .placement{color:var(--second)}
+  .season.low .placement{color:var(--low)}
 
-  .placement-badge {
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 0.2rem 0.65rem;
-    border-radius: 20px;
-    background: rgba(255,255,255,0.06);
-    color: var(--muted);
-    white-space: nowrap;
-    flex-shrink: 0;
+  /* ── Compact browse grid ── */
+  .browse-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.6rem}
+  .browse-card{
+    background:var(--panel); border:1.5px solid var(--border); border-radius:10px; padding:.85rem 1rem;
+    cursor:pointer; transition:border-color .15s;
   }
-  .p-winner .placement-badge { background: rgba(245,200,66,0.15);  color: var(--gold); }
-  .p-second .placement-badge { background: rgba(191,128,255,0.18); color: var(--lilac); }
-  .p-low    .placement-badge { background: rgba(255,45,120,0.15);  color: var(--pink); }
+  .browse-card:hover{border-color:var(--lime)}
+  .browse-card:hover .bc-name{color:var(--lime)}
+  .bc-name{font-weight:700;font-size:.95rem;transition:color .15s;margin-bottom:.15rem}
+  .bc-stat{font-size:.68rem;color:var(--muted);font-family:'JetBrains Mono',monospace}
 
-  /* ── BROWSE GRID ── */
-  .browse-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 0.75rem;
-  }
-  .browse-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 13px;
-    padding: 1rem 1.1rem;
-    cursor: pointer;
-    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-    animation: cardIn 0.35s ease both;
-  }
-  .browse-card:hover {
-    border-color: var(--border2);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-  }
-  .browse-card:hover .bc-name { color: var(--lilac); }
-  .bc-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: var(--text);
-    transition: color 0.2s;
-    margin-bottom: 0.2rem;
-    line-height: 1.2;
-  }
-  .bc-stat { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.05em; }
+  /* ── Empty state ── */
+  .empty{text-align:center;padding:3rem 1rem;color:var(--muted)}
+  .empty-icon{font-size:2rem;margin-bottom:.6rem}
 
-  /* ── HALL OF FAME ── */
-  #hofSection { display: none; }
+  /* ── Admin modal ── */
+  .modal-overlay{
+    position:fixed;inset:0;background:rgba(4,8,6,.85);backdrop-filter:blur(6px);z-index:200;
+    display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity .2s;
+  }
+  .modal-overlay.open{opacity:1;pointer-events:all}
+  .modal{
+    background:var(--card); border:1.5px solid var(--border2); border-radius:16px; padding:2rem 2.2rem;
+    width:100%; max-width:440px; transform:translateY(14px); transition:transform .2s;
+  }
+  .modal-overlay.open .modal{transform:translateY(0)}
+  .modal h2{font-weight:700;font-size:1.5rem;color:var(--lime);margin-bottom:.3rem}
+  .modal-sub{color:var(--muted);font-size:.82rem;margin-bottom:1.5rem}
+  .field-label{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:.4rem;display:block}
+  .field-input{
+    width:100%; background:var(--panel); border:1.5px solid var(--border); border-radius:9px; color:var(--text);
+    font-family:'Space Grotesk'; font-size:.95rem; padding:.7rem .9rem; outline:none; margin-bottom:1rem;
+  }
+  .field-input:focus{border-color:var(--lime)}
+  .btn-primary{
+    background:var(--lime); border:none; border-radius:9px; color:#0c1210; font-family:'Space Grotesk';
+    font-size:.95rem; font-weight:700; padding:.75rem 1.5rem; cursor:pointer; width:100%; transition:opacity .15s;
+  }
+  .btn-primary:hover{opacity:.9}
+  .error-msg{font-size:.8rem;color:var(--low);margin-top:-.6rem;margin-bottom:.7rem;min-height:1rem}
 
-  .hof-intro {
-    text-align: center;
-    margin-bottom: 2.5rem;
-    opacity: 0;
-    animation: fadeUp 0.5s 0.1s forwards;
+  .toast{
+    position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(16px);background:var(--panel);
+    border:1.5px solid var(--border2);border-radius:24px;padding:.6rem 1.3rem;font-size:.85rem;color:var(--text);
+    opacity:0;transition:opacity .25s,transform .25s;z-index:300;white-space:nowrap;pointer-events:none;
   }
-  .hof-intro h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.8rem, 5vw, 2.8rem);
-    font-weight: 700;
-    background: linear-gradient(135deg, var(--gold) 0%, #fff 50%, var(--gold) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 0.4rem;
-  }
-  .hof-intro p {
-    color: var(--muted);
-    font-size: 0.88rem;
-    font-style: italic;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
-  .hof-season-block {
-    margin-bottom: 1.5rem;
-    animation: cardIn 0.4s ease both;
-  }
-  .hof-season-heading {
-    font-size: 0.68rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--muted);
-    font-weight: 500;
-    margin-bottom: 0.6rem;
-    padding-left: 0.2rem;
-  }
-  .hof-card {
-    background: var(--winner-bg);
-    border: 1px solid rgba(245,200,66,0.22);
-    border-left: 3px solid var(--gold);
-    border-radius: 14px;
-    padding: 1rem 1.4rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .hof-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(245,200,66,0.1);
-  }
-  .hof-card-left { display: flex; align-items: center; gap: 0.9rem; }
-  .hof-crown { font-size: 1.5rem; line-height: 1; }
-  .hof-queen-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: var(--gold);
-    cursor: pointer;
-    transition: color 0.15s;
-  }
-  .hof-queen-name:hover { color: #fff; }
-  .hof-challenge-badge {
-    font-size: 0.72rem;
-    font-weight: 600;
-    color: var(--gold-dim);
-    background: rgba(245,200,66,0.1);
-    border: 1px solid rgba(245,200,66,0.2);
-    border-radius: 20px;
-    padding: 0.2rem 0.7rem;
-    letter-spacing: 0.06em;
-    white-space: nowrap;
-  }
-  .hof-challenge-badge span { color: var(--gold); }
-
-  /* ── EMPTY STATE ── */
-  .empty {
-    text-align: center;
-    padding: 3rem 1rem;
-    color: var(--muted);
-  }
-  .empty-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
-  .empty p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.2rem; }
-
-  /* ── MODAL ── */
-  .modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(4,2,12,0.85);
-    backdrop-filter: blur(8px);
-    z-index: 200;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.25s;
-  }
-  .modal-overlay.open { opacity: 1; pointer-events: all; }
-  .modal {
-    background: var(--card);
-    border: 1px solid var(--border2);
-    border-radius: 22px;
-    padding: 2.2rem 2.4rem;
-    width: 100%;
-    max-width: 520px;
-    max-height: 90vh;
-    overflow-y: auto;
-    position: relative;
-    transform: translateY(20px) scale(0.97);
-    transition: transform 0.25s;
-  }
-  .modal-overlay.open .modal { transform: translateY(0) scale(1); }
-  .modal h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.9rem;
-    font-weight: 700;
-    margin-bottom: 0.25rem;
-    background: linear-gradient(90deg, var(--lilac), var(--pink));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .modal-sub { color: var(--muted); font-size: 0.83rem; margin-bottom: 1.8rem; }
-  .field-label {
-    font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--muted); font-weight: 500; margin-bottom: 0.45rem; display: block;
-  }
-  .field-input {
-    width: 100%;
-    background: var(--surface);
-    border: 1.5px solid var(--border);
-    border-radius: 10px;
-    color: var(--text);
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.95rem;
-    padding: 0.7rem 0.95rem;
-    outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    margin-bottom: 1.1rem;
-  }
-  .field-input:focus { border-color: var(--lilac); box-shadow: 0 0 0 3px rgba(191,128,255,0.12); }
-  .btn-primary {
-    background: linear-gradient(135deg, var(--magenta), #7a00cc);
-    border: none; border-radius: 11px; color: #fff;
-    font-family: 'Outfit', sans-serif; font-size: 0.95rem; font-weight: 600;
-    letter-spacing: 0.04em; padding: 0.8rem 2rem; cursor: pointer; width: 100%;
-    transition: opacity 0.2s, transform 0.15s;
-    box-shadow: 0 4px 20px rgba(212,0,168,0.3);
-  }
-  .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
-  .error-msg {
-    font-size: 0.82rem; color: var(--pink); margin-top: -0.7rem;
-    margin-bottom: 0.8rem; padding-left: 0.3rem; min-height: 1rem;
-  }
-
-  /* ── TOAST ── */
-  .toast {
-    position: fixed; bottom: 2rem; left: 50%;
-    transform: translateX(-50%) translateY(20px);
-    background: var(--surface); border: 1px solid var(--border2);
-    border-radius: 30px; padding: 0.65rem 1.4rem;
-    font-size: 0.88rem; color: var(--text);
-    opacity: 0; transition: opacity 0.3s, transform 0.3s;
-    z-index: 300; white-space: nowrap; pointer-events: none;
-  }
-  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes cardIn {
-    from { opacity: 0; transform: translateY(12px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .queen-card:nth-child(1), .browse-card:nth-child(1) { animation-delay: 0.05s; }
-  .queen-card:nth-child(2), .browse-card:nth-child(2) { animation-delay: 0.10s; }
-  .queen-card:nth-child(3), .browse-card:nth-child(3) { animation-delay: 0.14s; }
-  .queen-card:nth-child(4), .browse-card:nth-child(4) { animation-delay: 0.18s; }
-  .queen-card:nth-child(5), .browse-card:nth-child(5) { animation-delay: 0.21s; }
-  .queen-card:nth-child(6), .browse-card:nth-child(6) { animation-delay: 0.24s; }
-  .queen-card:nth-child(n+7), .browse-card:nth-child(n+7) { animation-delay: 0.26s; }
-  .hof-season-block:nth-child(1) { animation-delay: 0.05s; }
-  .hof-season-block:nth-child(2) { animation-delay: 0.10s; }
-  .hof-season-block:nth-child(3) { animation-delay: 0.14s; }
-  .hof-season-block:nth-child(n+4) { animation-delay: 0.18s; }
-
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+  ::-webkit-scrollbar{width:6px}
+  ::-webkit-scrollbar-track{background:transparent}
+  ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
 </style>
 </head>
 <body>
 
 <div class="wrap" id="appWrap">
-
-  <!-- Hero -->
   <div class="hero">
-    <div class="hero-eyebrow">✦ July &nbsp;&&nbsp; Vivianna's &nbsp;&nbsp; Drag Race ✦</div>
-    <h1 class="hero-title">July & Vivianna's Queen Database</h1>
-    <div class="hero-rule"><span>♛</span></div>
+    <div class="top"><span class="dot"></span><h1>Queen Database</h1></div>
+    <div class="sub">// july &amp; vivianna's fantasy drag race franchise</div>
   </div>
 
-  <!-- Tab nav -->
-  <div class="tab-nav">
-    <button class="tab-btn active" id="tabQueens"   onclick="switchTab('queens')">Queens</button>
-    <button class="tab-btn"        id="tabHof"      onclick="switchTab('hof')">♛ Hall of Fame</button>
+  <div class="search-row">
+    <input type="text" id="searchInput" placeholder="search queens by name..." autocomplete="off" spellcheck="false"/>
   </div>
 
-  <!-- Stats bar -->
-  <div class="stats-bar" id="statsBar"></div>
+  <div class="toolbar" id="toolbar"></div>
 
-  <!-- ── QUEENS SECTION ── -->
-  <div id="queensSection">
-    <!-- Search + filter -->
-    <div class="controls-row">
-      <div class="search-wrap">
-        <span class="search-icon">⌕</span>
-        <input type="text" id="searchInput" placeholder="Search queens by name…" autocomplete="off" spellcheck="false"/>
-      </div>
-      <select id="seasonFilter" onchange="render()">
-        <option value="">All Seasons</option>
-      </select>
-    </div>
+  <div class="stats-row" id="statsBar"></div>
 
-    <div class="results-label" id="resultsLabel"></div>
-    <div id="queensContainer"></div>
-  </div>
-
-  <!-- ── HALL OF FAME SECTION ── -->
-  <div id="hofSection">
-    <div class="hof-intro">
-      <h2>♛ Hall of Fame</h2>
-      <p>Every queen who has worn the crown.</p>
-    </div>
-    <div id="hofContainer"></div>
-  </div>
-
+  <div class="results-label" id="resultsLabel"></div>
+  <div id="queensContainer"></div>
 </div>
 
-<!-- Login modal -->
 <div class="modal-overlay open" id="modalOverlay">
   <div class="modal">
     <h2>Enter the Werk Room</h2>
@@ -633,7 +181,7 @@
     <label class="field-label" for="codeInput">Secret Code</label>
     <input class="field-input" type="password" id="codeInput" placeholder="••••••" onkeydown="if(event.key==='Enter')checkCode()"/>
     <div class="error-msg" id="codeError"></div>
-    <button class="btn-primary" onclick="checkCode()">Unlock ✦</button>
+    <button class="btn-primary" onclick="checkCode()">Unlock</button>
   </div>
 </div>
 
@@ -642,34 +190,85 @@
 <script>
 let QUEENS = [];
 const SECRET = "SPORKY";
-let currentTab = "queens";
+let authenticated = false;
 
-/* ── HELPERS ── */
+/* filter/sort state */
+let searchQuery = "";
+let selectedFranchise = "All";
+let selectedSeason = "All";
+let sortMode = "name";
+
+/* ── Franchise / season derivation (nothing hardcoded — computed from whatever's in queens.json) ── */
+
+function franchiseOf(seasonName) {
+  const s = String(seasonName || "").trim();
+  if (/^Season\s+\d+$/i.test(s)) return "Regular Season";
+  let m = s.match(/^(.*?)\s+Season\s*\d+$/i);
+  if (m && m[1]) return m[1].trim();
+  m = s.match(/^(.*?)\s+\d+$/);
+  if (m && m[1]) return m[1].trim();
+  return s;
+}
+
+function getAllSeasonEntries() {
+  // flat list of { season, franchise } across every queen's every appearance
+  const seen = new Map();
+  QUEENS.forEach(q => (q.seasons || []).forEach(s => {
+    if (s.season && !seen.has(s.season)) seen.set(s.season, franchiseOf(s.season));
+  }));
+  return seen;
+}
+
+function getFranchiseList() {
+  const entries = getAllSeasonEntries();
+  const set = new Set(entries.values());
+  const list = [...set];
+  list.sort((a, b) => {
+    if (a === "Regular Season") return -1;
+    if (b === "Regular Season") return 1;
+    return a.localeCompare(b);
+  });
+  return list;
+}
+
+function naturalSeasonSort(a, b) {
+  const numA = (a.match(/(\d+)(?!.*\d)/) || [])[1];
+  const numB = (b.match(/(\d+)(?!.*\d)/) || [])[1];
+  const fA = franchiseOf(a), fB = franchiseOf(b);
+  if (fA !== fB) return fA.localeCompare(fB);
+  if (numA && numB) return parseInt(numA) - parseInt(numB);
+  if (numA && !numB) return 1;
+  if (!numA && numB) return -1;
+  return a.localeCompare(b);
+}
+
+function getSeasonsForFranchise(franchise) {
+  const entries = getAllSeasonEntries();
+  let seasons = [...entries.keys()];
+  if (franchise !== "All") seasons = seasons.filter(s => entries.get(s) === franchise);
+  seasons.sort(naturalSeasonSort);
+  return seasons;
+}
+
+/* ── Placement styling (visual only — not used for filtering) ── */
+
 function placementClass(p) {
   const l = String(p || "").toLowerCase();
-  if (l.includes("winner") || l === "1st") return "p-winner";
-  if (l.includes("runner") || l === "2nd") return "p-second";
-  if (l.includes("elim") || l.includes("bottom")) return "p-low";
+  if (l.includes("winner") || l.startsWith("1st")) return "winner";
+  if (l.includes("runner") || l.includes("2nd")) return "second";
+  if (l.includes("elim") || l.includes("bottom")) return "low";
   return "";
 }
 
-function crownCount(queen) {
-  return queen.seasons.filter(s => placementClass(s.placement) === "p-winner").length;
+function winCount(queen) {
+  return (queen.seasons || []).filter(s => placementClass(s.placement) === "winner").length;
 }
-
-function getAllSeasons() {
-  const set = new Set();
-  QUEENS.forEach(q => q.seasons.forEach(s => set.add(s.season)));
-  return [...set].sort((a, b) => {
-    // sort numerically where possible
-    const numA = parseInt(a.match(/\d+/)?.[0] || "999");
-    const numB = parseInt(b.match(/\d+/)?.[0] || "999");
-    if (a.toLowerCase().includes("all stars") && !b.toLowerCase().includes("all stars")) return 1;
-    if (!a.toLowerCase().includes("all stars") && b.toLowerCase().includes("all stars")) return -1;
-    if (a.toLowerCase().includes("special") || a.toLowerCase().includes("jv")) return 1;
-    if (b.toLowerCase().includes("special") || b.toLowerCase().includes("jv")) return -1;
-    return numA - numB;
-  });
+function challengeWinTotal(queen) {
+  return (queen.seasons || []).reduce((a, s) => a + (Number(s.challenge_wins) || 0), 0);
+}
+function queenFranchises(queen) {
+  const set = new Set((queen.seasons || []).map(s => franchiseOf(s.season)));
+  return [...set];
 }
 
 function showToast(msg) {
@@ -679,206 +278,192 @@ function showToast(msg) {
   setTimeout(() => t.classList.remove("show"), 2200);
 }
 
-/* ── TAB SWITCHING ── */
-function switchTab(tab) {
-  currentTab = tab;
-  document.getElementById("tabQueens").classList.toggle("active", tab === "queens");
-  document.getElementById("tabHof").classList.toggle("active", tab === "hof");
-  document.getElementById("queensSection").style.display = tab === "queens" ? "" : "none";
-  document.getElementById("hofSection").style.display = tab === "hof" ? "" : "none";
-  if (tab === "hof") renderHof();
-}
+/* ── Toolbar (franchise tabs + season select + sort select) ── */
 
-/* ── POPULATE SEASON FILTER ── */
-function populateSeasonFilter() {
-  const sel = document.getElementById("seasonFilter");
-  getAllSeasons().forEach(s => {
-    const opt = document.createElement("option");
-    opt.value = s;
-    opt.textContent = s;
-    sel.appendChild(opt);
-  });
-}
+function renderToolbar() {
+  const toolbar = document.getElementById("toolbar");
+  const franchises = getFranchiseList();
 
-/* ── STATS BAR ── */
-function renderStats() {
-  const totalSeasons = QUEENS.reduce((a, q) => a + q.seasons.length, 0);
-  const winners = QUEENS.filter(q => q.seasons.some(s => placementClass(s.placement) === "p-winner")).length;
-  document.getElementById("statsBar").innerHTML = `
-    <div class="stat-pill"><strong>${QUEENS.length}</strong> Queens</div>
-    <div class="stat-pill"><strong>${totalSeasons}</strong> Appearances</div>
-    <div class="stat-pill"><strong>${winners}</strong> Crown Holders</div>
+  const tabsHTML = ["All", ...franchises].map(f => `
+    <span class="tab ${f === selectedFranchise ? "active" : ""}" onclick="setFranchise('${f.replace(/'/g, "\\'")}')">${f}</span>
+  `).join("");
+
+  const seasonOptions = ["All", ...getSeasonsForFranchise(selectedFranchise)];
+  const seasonHTML = seasonOptions.map(s => `<option value="${s}" ${s === selectedSeason ? "selected" : ""}>${s === "All" ? "All seasons" : s}</option>`).join("");
+
+  toolbar.innerHTML = `
+    ${tabsHTML}
+    <select id="seasonSelect" onchange="setSeason(this.value)">${seasonHTML}</select>
+    <select id="sortSelect" onchange="setSort(this.value)">
+      <option value="name" ${sortMode === "name" ? "selected" : ""}>Sort: A–Z</option>
+      <option value="wins" ${sortMode === "wins" ? "selected" : ""}>Sort: Most wins</option>
+      <option value="appearances" ${sortMode === "appearances" ? "selected" : ""}>Sort: Most appearances</option>
+      <option value="challenge" ${sortMode === "challenge" ? "selected" : ""}>Sort: Most challenge wins</option>
+    </select>
   `;
 }
 
-/* ── MAIN QUEENS RENDER ── */
-function render() {
-  const query  = document.getElementById("searchInput").value.trim().toLowerCase();
-  const season = document.getElementById("seasonFilter").value;
-  const container = document.getElementById("queensContainer");
-  const label  = document.getElementById("resultsLabel");
+function setFranchise(f) {
+  selectedFranchise = f;
+  selectedSeason = "All";
+  renderToolbar();
+  render();
+}
+function setSeason(s) {
+  selectedSeason = s;
+  render();
+}
+function setSort(s) {
+  sortMode = s;
+  render();
+}
 
-  // Filter
-  let results = QUEENS.filter(q => {
-    const nameMatch = !query || q.name.toLowerCase().includes(query);
-    const seasonMatch = !season || q.seasons.some(s => s.season === season);
-    return nameMatch && seasonMatch;
+/* ── Filtering + sorting ── */
+
+function getFilteredSorted() {
+  let result = QUEENS.filter(q => {
+    if (searchQuery && !q.name.toLowerCase().includes(searchQuery)) return false;
+    if (selectedFranchise !== "All" || selectedSeason !== "All") {
+      const matches = (q.seasons || []).some(s => {
+        if (selectedSeason !== "All") return s.season === selectedSeason;
+        return franchiseOf(s.season) === selectedFranchise;
+      });
+      if (!matches) return false;
+    }
+    return true;
   });
 
-  // No search & no filter → browse grid
-  if (!query && !season) {
-    const sorted = [...QUEENS].sort((a, b) => a.name.localeCompare(b.name));
-    label.textContent = `All ${sorted.length} queens`;
+  result.sort((a, b) => {
+    if (sortMode === "wins") return winCount(b) - winCount(a) || a.name.localeCompare(b.name);
+    if (sortMode === "appearances") return (b.seasons || []).length - (a.seasons || []).length || a.name.localeCompare(b.name);
+    if (sortMode === "challenge") return challengeWinTotal(b) - challengeWinTotal(a) || a.name.localeCompare(b.name);
+    return a.name.localeCompare(b.name);
+  });
+
+  return result;
+}
+
+/* ── Render ── */
+
+function render() {
+  const container = document.getElementById("queensContainer");
+  const label = document.getElementById("resultsLabel");
+  const statsBar = document.getElementById("statsBar");
+
+  const totalSeasons = QUEENS.reduce((a, q) => a + (q.seasons || []).length, 0);
+  const winners = QUEENS.filter(q => winCount(q) > 0).length;
+  const totalChallengeWins = QUEENS.reduce((a, q) => a + challengeWinTotal(q), 0);
+
+  statsBar.innerHTML = `
+    <div class="stat"><div class="n">${QUEENS.length}</div><div class="l">queens</div></div>
+    <div class="stat"><div class="n">${totalSeasons}</div><div class="l">appearances</div></div>
+    <div class="stat"><div class="n">${winners}</div><div class="l">winners</div></div>
+    <div class="stat"><div class="n">${totalChallengeWins}</div><div class="l">challenge wins</div></div>
+  `;
+
+  const filtersActive = searchQuery !== "" || selectedFranchise !== "All" || selectedSeason !== "All";
+  const results = getFilteredSorted();
+
+  if (!filtersActive) {
+    label.textContent = `All ${results.length} queens`;
     container.innerHTML = `<div class="browse-grid">${
-      sorted.map(q => `
-        <div class="browse-card" onclick="searchFor('${q.name.replace(/'/g,"\\'")}')">
+      results.map(q => `
+        <div class="browse-card" onclick="searchFor('${q.name.replace(/'/g, "\\'")}')">
           <div class="bc-name">${q.name}</div>
-          <div class="bc-stat">${q.seasons.length} appearance${q.seasons.length !== 1 ? "s" : ""}</div>
+          <div class="bc-stat">${(q.seasons || []).length} appearance${(q.seasons || []).length !== 1 ? "s" : ""}</div>
         </div>`).join("")
     }</div>`;
     return;
   }
 
-  label.textContent = results.length
-    ? `${results.length} queen${results.length !== 1 ? "s" : ""} found${season ? " in " + season : ""}`
-    : "";
+  label.textContent = results.length ? `${results.length} queen${results.length !== 1 ? "s" : ""} found` : "";
 
   if (!results.length) {
     container.innerHTML = `
       <div class="empty">
-        <div class="empty-icon">🪄</div>
-        <p>No queens found${query ? ` matching "<em>${query}</em>"` : ""}${season ? ` in <em>${season}</em>` : ""}</p>
+        <div class="empty-icon">🔍</div>
+        <p>No queens match those filters.</p>
       </div>`;
     return;
   }
 
-  // When filtering by season, show only that season's entry per queen
   container.innerHTML = `<div class="queens-grid">${
     results.map(q => {
-      const crowns = crownCount(q);
-      const displaySeasons = season
-        ? q.seasons.filter(s => s.season === season)
-        : q.seasons;
+      const seasons = q.seasons || [];
+      const wins = winCount(q);
+      const cwTotal = challengeWinTotal(q);
+      const franchiseTag = queenFranchises(q).join(" · ").toUpperCase();
 
-      const seasonsHTML = displaySeasons.map(s => {
-        const cw = s.challenge_wins || 0;
-        return `
-          <div class="season-row ${placementClass(s.placement)}">
-            <div class="season-row-left">
-              <span class="season-name">${s.season}</span>
-              ${cw > 0 ? `<span class="challenge-wins-label">⭐ <span>${cw}</span> challenge win${cw !== 1 ? "s" : ""}</span>` : ""}
-            </div>
-            <span class="placement-badge">${s.placement}</span>
-          </div>`;
-      }).join("");
+      const seasonsHTML = seasons.map(s => `
+        <div class="season ${placementClass(s.placement)}">
+          <span class="s-name">${s.season}</span>
+          <span class="s-right">
+            <span class="s-cw">${Number(s.challenge_wins) || 0}★</span>
+            <span class="placement">${s.placement || "—"}</span>
+          </span>
+        </div>`).join("");
 
       return `
         <div class="queen-card">
-          <div class="queen-header">
-            <div class="queen-name">${q.name}</div>
-            <div class="queen-meta">
-              <span class="meta-chip">${q.seasons.length} appearance${q.seasons.length !== 1 ? "s" : ""}</span>
-              ${crowns ? `<span class="meta-chip crowns">♛ ${crowns} crown${crowns !== 1 ? "s" : ""}</span>` : ""}
+          <div class="name-row">
+            <div>
+              <div class="name">${q.name}</div>
+              <div class="franchise-tag">${franchiseTag}</div>
+            </div>
+            <div class="badges">
+              <span class="badge">${seasons.length} app${seasons.length !== 1 ? "s" : ""}</span>
+              ${wins ? `<span class="badge">${wins} win${wins !== 1 ? "s" : ""}</span>` : ""}
+              ${cwTotal ? `<span class="badge star">${cwTotal}★</span>` : ""}
             </div>
           </div>
-          <div class="seasons-list">${seasonsHTML}</div>
+          <div class="seasons">${seasonsHTML}</div>
         </div>`;
     }).join("")
   }</div>`;
 }
 
-/* ── HALL OF FAME RENDER ── */
-function renderHof() {
-  const container = document.getElementById("hofContainer");
-
-  // Build: { seasonName: [{ queen, challengeWins }] }
-  const byseason = {};
-  QUEENS.forEach(q => {
-    q.seasons.forEach(s => {
-      if (placementClass(s.placement) === "p-winner") {
-        if (!byseason[s.season]) byseason[s.season] = [];
-        byseason[s.season].push({ queen: q.name, challengeWins: s.challenge_wins || 0 });
-      }
-    });
-  });
-
-  const seasonOrder = getAllSeasons();
-  const orderedKeys = seasonOrder.filter(k => byseason[k]);
-
-  if (!orderedKeys.length) {
-    container.innerHTML = `<div class="empty"><div class="empty-icon">👑</div><p>No winners recorded yet.</p></div>`;
-    return;
-  }
-
-  container.innerHTML = orderedKeys.map((season, i) => {
-    const entries = byseason[season];
-    const cardsHTML = entries.map(e => `
-      <div class="hof-card">
-        <div class="hof-card-left">
-          <span class="hof-crown">♛</span>
-          <span class="hof-queen-name" onclick="goToQueen('${e.queen.replace(/'/g,"\\'")}')">
-            ${e.queen}
-          </span>
-        </div>
-        ${e.challengeWins > 0
-          ? `<span class="hof-challenge-badge">⭐ <span>${e.challengeWins}</span> challenge win${e.challengeWins !== 1 ? "s" : ""}</span>`
-          : ""}
-      </div>`).join("");
-
-    return `
-      <div class="hof-season-block" style="animation-delay:${Math.min(i * 0.05, 0.3)}s">
-        <div class="hof-season-heading">${season}</div>
-        ${cardsHTML}
-      </div>`;
-  }).join("");
-}
-
-function goToQueen(name) {
-  switchTab("queens");
-  document.getElementById("seasonFilter").value = "";
-  document.getElementById("searchInput").value = name;
-  render();
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
-
 function searchFor(name) {
-  document.getElementById("seasonFilter").value = "";
   document.getElementById("searchInput").value = name;
+  searchQuery = name.toLowerCase();
   render();
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-document.getElementById("searchInput").addEventListener("input", render);
+document.getElementById("searchInput").addEventListener("input", (e) => {
+  searchQuery = e.target.value.trim().toLowerCase();
+  render();
+});
 
-/* ── LOAD DATA ── */
 async function loadQueens() {
   try {
     const res = await fetch("queens.json", { cache: "no-store" });
     if (!res.ok) throw new Error(`Failed to load queens.json (${res.status})`);
     const data = await res.json();
     QUEENS = Array.isArray(data) ? data : [];
-    populateSeasonFilter();
-    renderStats();
+    renderToolbar();
     render();
   } catch (err) {
     console.error(err);
     showToast("Could not load queens.json");
     document.getElementById("queensContainer").innerHTML = `
-      <div class="empty"><div class="empty-icon">⚠️</div><p>Could not load queens.json</p></div>`;
+      <div class="empty">
+        <div class="empty-icon">⚠️</div>
+        <p>Could not load queens.json</p>
+      </div>`;
   }
 }
 
-/* ── LOGIN ── */
 async function checkCode() {
   const val = document.getElementById("codeInput").value;
   if (val === SECRET) {
+    authenticated = true;
     document.getElementById("codeError").textContent = "";
     document.getElementById("modalOverlay").classList.remove("open");
     document.getElementById("appWrap").style.display = "block";
     await loadQueens();
     setTimeout(() => document.getElementById("searchInput").focus(), 50);
   } else {
-    document.getElementById("codeError").textContent = "Wrong code, honey. Try again! 💅";
+    document.getElementById("codeError").textContent = "Wrong code. Try again.";
     document.getElementById("codeInput").value = "";
     document.getElementById("codeInput").focus();
   }
@@ -887,7 +472,6 @@ async function checkCode() {
 window.addEventListener("DOMContentLoaded", () => {
   document.getElementById("appWrap").style.display = "none";
   document.getElementById("modalOverlay").classList.add("open");
-  document.getElementById("hofSection").style.display = "none";
   document.getElementById("codeInput").focus();
 });
 </script>
