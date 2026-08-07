@@ -120,7 +120,7 @@
       {
         "season": "All Stars 2",
         "placement": "Winner",
-        "challenge_wins": 2
+        "challenge_wins": 3
       }
     ]
   },
@@ -315,7 +315,7 @@
       {
         "season": "Season 3",
         "placement": "Winner",
-        "challenge_wins": 0
+        "challenge_wins": 2
       }
     ]
   },
@@ -325,12 +325,12 @@
       {
         "season": "Season 3",
         "placement": "Runner Up",
-        "challenge_wins": 0
+        "challenge_wins": 2
       },
       {
         "season": "All Stars 2",
         "placement": "10th",
-        "challenge_wins": 0
+        "challenge_wins": 1
       },
       {
         "season": "JV vs The Universe Season 2",
@@ -345,12 +345,12 @@
       {
         "season": "Season 3",
         "placement": "3/4th",
-        "challenge_wins": 0
+        "challenge_wins": 2
       },
       {
         "season": "All Stars 1",
         "placement": "Winner",
-        "challenge_wins": 0
+        "challenge_wins": 5
       },
       {
         "season": "All Stars 5",
@@ -385,7 +385,7 @@
       {
         "season": "Season 3",
         "placement": "5th",
-        "challenge_wins": 0
+        "challenge_wins": 2
       },
       {
         "season": "All Stars 2",
@@ -505,7 +505,7 @@
       {
         "season": "Season 4",
         "placement": "Winner",
-        "challenge_wins": 0
+        "challenge_wins": 2
       },
       {
         "season": "All Stars 5",
@@ -520,12 +520,12 @@
       {
         "season": "Season 4",
         "placement": "Runner Up",
-        "challenge_wins": 0
+        "challenge_wins": 2
       },
       {
         "season": "All Stars 2",
         "placement": "9th",
-        "challenge_wins": 0
+        "challenge_wins": 1
       }
     ]
   },
@@ -535,7 +535,7 @@
       {
         "season": "Season 4",
         "placement": "3rd",
-        "challenge_wins": 0
+        "challenge_wins": 1
       }
     ]
   },
@@ -545,7 +545,7 @@
       {
         "season": "Season 4",
         "placement": "4th",
-        "challenge_wins": 0
+        "challenge_wins": 1
       },
       {
         "season": "All Stars 3",
@@ -565,7 +565,7 @@
       {
         "season": "All Stars 2",
         "placement": "7th",
-        "challenge_wins": 0
+        "challenge_wins": 1
       }
     ]
   },
@@ -575,7 +575,7 @@
       {
         "season": "Season 4",
         "placement": "5/6th",
-        "challenge_wins": 0
+        "challenge_wins": 1
       },
       {
         "season": "All Stars 3",
@@ -610,7 +610,7 @@
       {
         "season": "Season 4",
         "placement": "8th",
-        "challenge_wins": 0
+        "challenge_wins": 1
       }
     ]
   },
@@ -640,7 +640,7 @@
       {
         "season": "All Stars 2",
         "placement": "Runner Up",
-        "challenge_wins": 0
+        "challenge_wins": 3
       },
       {
         "season": "JV vs The Universe",
@@ -665,7 +665,7 @@
       {
         "season": "Season 5",
         "placement": "Winner",
-        "challenge_wins": 0
+        "challenge_wins": 1
       }
     ]
   },
@@ -690,12 +690,12 @@
       {
         "season": "Season 5",
         "placement": "Runner Up",
-        "challenge_wins": 0
+        "challenge_wins": 1
       },
       {
         "season": "All Stars 2",
         "placement": "3rd",
-        "challenge_wins": 0
+        "challenge_wins": 2
       }
     ]
   },
@@ -720,7 +720,7 @@
       {
         "season": "Season 5",
         "placement": "5th",
-        "challenge_wins": 0
+        "challenge_wins": 1
       },
       {
         "season": "All Stars 3",
@@ -735,16 +735,16 @@
       {
         "season": "Season 5",
         "placement": "6th",
-        "challenge_wins": 0
+        "challenge_wins": 2
       },
       {
         "season": "All Stars 2",
         "placement": "5th",
-        "challenge_wins": 0
+        "challenge_wins": 3
       },
       {
         "season": "JV vs The Universe Season 2",
-        "placement": "6tg",
+        "placement": "6th",
         "challenge_wins": 1
       }
     ]
@@ -2231,6 +2231,146 @@
         "season": "JV vs The Universe Season 2",
         "placement": "Runner Up",
         "challenge_wins": 1
+      }
+    ]
+  },
+  {
+    "name": "Queefie",
+    "seasons": [
+      {
+        "season": "Season 16",
+        "placement": "14th",
+        "challenge_wins": 0
+      }
+    ]
+  },
+  {
+    "name": "Magnolia Crawford",
+    "seasons": [
+      {
+        "season": "Season 16",
+        "placement": "13th",
+        "challenge_wins": 0
+      }
+    ]
+  },
+  {
+    "name": "Crysta",
+    "seasons": [
+      {
+        "season": "Season 16",
+        "placement": "12th",
+        "challenge_wins": 0
+      }
+    ]
+  },
+  {
+    "name": "Biggy B",
+    "seasons": [
+      {
+        "season": "Season 16",
+        "placement": "11th",
+        "challenge_wins": 0
+      }
+    ]
+  },
+  {
+    "name": "Foxie Fontaine",
+    "seasons": [
+      {
+        "season": "Season 16",
+        "placement": "10th",
+        "challenge_wins": 0
+      }
+    ]
+  },
+  {
+    "name": "Kiki McTwist",
+    "seasons": [
+      {
+        "season": "Season 16",
+        "placement": "9th",
+        "challenge_wins": 1
+      }
+    ]
+  },
+  {
+    "name": "Lacie Deluxe",
+    "seasons": [
+      {
+        "season": "Season 16",
+        "placement": "7th/8th",
+        "challenge_wins": 0
+      }
+    ]
+  },
+  {
+    "name": "Miss Small O",
+    "seasons": [
+      {
+        "season": "Season 16",
+        "placement": "7th/8th",
+        "challenge_wins": 2
+      }
+    ]
+  },
+  {
+    "name": "Luxx Goldleaf",
+    "seasons": [
+      {
+        "season": "Season 16",
+        "placement": "6th (Orig 8th)",
+        "challenge_wins": 1
+      }
+    ]
+  },
+  {
+    "name": "Nadia Richeé",
+    "seasons": [
+      {
+        "season": "Season 16",
+        "placement": "5th",
+        "challenge_wins": 1
+      }
+    ]
+  },
+  {
+    "name": "Lamouré",
+    "seasons": [
+      {
+        "season": "Season 16",
+        "placement": "3rd/4th",
+        "challenge_wins": 3
+      }
+    ]
+  },
+  {
+    "name": "Robin LaBelle",
+    "seasons": [
+      {
+        "season": "Season 16",
+        "placement": "3rd/4th",
+        "challenge_wins": 3
+      }
+    ]
+  },
+  {
+    "name": "Trinity Rosewood",
+    "seasons": [
+      {
+        "season": "Season 16",
+        "placement": "Runner Up",
+        "challenge_wins": 3
+      }
+    ]
+  },
+  {
+    "name": "Bleach",
+    "seasons": [
+      {
+        "season": "Season 16",
+        "placement": "Winner",
+        "challenge_wins": 3
       }
     ]
   }
