@@ -2373,5 +2373,145 @@
         "challenge_wins": 3
       }
     ]
+  },
+  {
+    "name": "Dominique LaRoux",
+    "seasons": [
+      {
+        "season": "Season 17",
+        "placement": "14th",
+        "challenge_wins": 0
+      }
+    ]
+  },
+  {
+    "name": "Darla Didit",
+    "seasons": [
+      {
+        "season": "Season 17",
+        "placement": "13th",
+        "challenge_wins": 0
+      }
+    ]
+  },
+  {
+    "name": "Foxie Skandál",
+    "seasons": [
+      {
+        "season": "Season 17",
+        "placement": "12th",
+        "challenge_wins": 0
+      }
+    ]
+  },
+  {
+    "name": "Gina Tonic",
+    "seasons": [
+      {
+        "season": "Season 17",
+        "placement": "11th",
+        "challenge_wins": 1
+      }
+    ]
+  },
+  {
+    "name": "Envy LaRoux",
+    "seasons": [
+      {
+        "season": "Season 17",
+        "placement": "10th",
+        "challenge_wins": 0
+      }
+    ]
+  },
+  {
+    "name": "Barbie Wire",
+    "seasons": [
+      {
+        "season": "Season 17",
+        "placement": "9th",
+        "challenge_wins": 0
+      }
+    ]
+  },
+  {
+    "name": "Delilah Couture",
+    "seasons": [
+      {
+        "season": "Season 17",
+        "placement": "8th",
+        "challenge_wins": 0
+      }
+    ]
+  },
+  {
+    "name": "Crystal Chandelier",
+    "seasons": [
+      {
+        "season": "Season 17",
+        "placement": "7th",
+        "challenge_wins": 1
+      }
+    ]
+  },
+  {
+    "name": "Ivanna Pickle",
+    "seasons": [
+      {
+        "season": "Season 17",
+        "placement": "6th",
+        "challenge_wins": 1
+      }
+    ]
+  },
+  {
+    "name": "Izaak Scragg",
+    "seasons": [
+      {
+        "season": "Season 17",
+        "placement": "5th",
+        "challenge_wins": 2
+      }
+    ]
+  },
+  {
+    "name": "Ari Monét",
+    "seasons": [
+      {
+        "season": "Season 17",
+        "placement": "3rd/4th",
+        "challenge_wins": 3
+      }
+    ]
+  },
+  {
+    "name": "Jane Wax",
+    "seasons": [
+      {
+        "season": "Season 17",
+        "placement": "3rd/4th",
+        "challenge_wins": 2
+      }
+    ]
+  },
+  {
+    "name": "Flambé",
+    "seasons": [
+      {
+        "season": "Season 17",
+        "placement": "Runner Up",
+        "challenge_wins": 3
+      }
+    ]
+  },
+  {
+    "name": "Paige Turner",
+    "seasons": [
+      {
+        "season": "Season 17",
+        "placement": "Winner",
+        "challenge_wins": 3
+      }
+    ]
   }
 ]
