@@ -256,6 +256,11 @@
         "season": "All Stars 2",
         "placement": "11th",
         "challenge_wins": 0
+      },
+      {
+        "season": "All Stars 8",
+        "placement": "10th",
+        "challenge_wins": 0
       }
     ]
   },
@@ -566,6 +571,11 @@
         "season": "All Stars 2",
         "placement": "7th",
         "challenge_wins": 1
+      },
+      {
+        "season": "All Stars 8",
+        "placement": "11th",
+        "challenge_wins": 0
       }
     ]
   },
@@ -1041,6 +1051,11 @@
         "season": "All Stars 4",
         "placement": "18-11th",
         "challenge_wins": 0
+      },
+      {
+        "season": "All Stars 8",
+        "placement": "5th",
+        "challenge_wins": 1
       }
     ]
   },
@@ -1315,6 +1330,11 @@
       {
         "season": "Season 9",
         "placement": "3rd",
+        "challenge_wins": 2
+      },
+      {
+        "season": "All Stars 8",
+        "placement": "7th",
         "challenge_wins": 0
       }
     ]
@@ -1526,6 +1546,11 @@
         "season": "Season 11",
         "placement": "3rd",
         "challenge_wins": 0
+      },
+      {
+        "season": "All Stars 8",
+        "placement": "6th",
+        "challenge_wins": 2
       }
     ]
   },
@@ -1685,6 +1710,11 @@
       {
         "season": "All Stars 7",
         "placement": "8th",
+        "challenge_wins": 0
+      },
+      {
+        "season": "All Stars 8",
+        "placement": "12th",
         "challenge_wins": 0
       }
     ]
@@ -1871,6 +1901,11 @@
         "season": "Season 13",
         "placement": "Runner Up",
         "challenge_wins": 0
+      },
+      {
+        "season": "All Stars 8",
+        "placement": "Runner Up",
+        "challenge_wins": 3
       }
     ]
   },
@@ -1981,6 +2016,11 @@
         "season": "Season 14",
         "placement": "5th",
         "challenge_wins": 0
+      },
+      {
+        "season": "All Stars 8",
+        "placement": "9th",
+        "challenge_wins": 0
       }
     ]
   },
@@ -1991,6 +2031,11 @@
         "season": "Season 14",
         "placement": "4th",
         "challenge_wins": 0
+      },
+      {
+        "season": "All Stars 8",
+        "placement": "3rd",
+        "challenge_wins": 1
       }
     ]
   },
@@ -2121,6 +2166,11 @@
         "season": "Season 15",
         "placement": "5th",
         "challenge_wins": 1
+      },
+      {
+        "season": "All Stars 8",
+        "placement": "8th",
+        "challenge_wins": 0
       }
     ]
   },
@@ -2341,6 +2391,11 @@
         "season": "Season 16",
         "placement": "3rd/4th",
         "challenge_wins": 3
+      },
+      {
+        "season": "All Stars 8",
+        "placement": "Winner",
+        "challenge_wins": 3
       }
     ]
   },
@@ -2471,6 +2526,11 @@
         "season": "Season 17",
         "placement": "5th",
         "challenge_wins": 2
+      },
+      {
+        "season": "All Stars 8",
+        "placement": "4th",
+        "challenge_wins": 1
       }
     ]
   },
